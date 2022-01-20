@@ -66,19 +66,6 @@ function citySearch(event) {
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", citySearch);
 
-//Week 5 HW task:
-//function showWeather(response) {
-//let temperature = Math.round(response.data.main.temp);
-//let weather = document.querySelector("#temperature").value;
-//weather.innerHTML = `Current temperature is: ${temperature}°C `;
-//}
-
-//let city = document.querySelector("#location");
-//let apiKey = "fcff6baa99a6aaa2ecb4f015dd030bde";
-//let url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${apiKey}&units=metric`;
-//axios.get(url).then(showWeather);
-//console.log(url);
-
 //Bonus task week 5:
 function currentWeather() {
   function showLocation(position) {
