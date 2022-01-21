@@ -57,12 +57,15 @@ body {
   margin: 0 auto;
 }
 
+.sourceCode {
+  float: right;
+  text-align: right;
+}
+
 .gitHubCode {
-  display: inline;
   transition: all 200ms ease;
   opacity: 1;
   color: #c8516a;
-  text-align: right;
 }
 .gitHubCode:hover {
   opacity: 0.7;
