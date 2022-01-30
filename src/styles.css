@@ -33,6 +33,7 @@ body {
 }
 
 .temperature {
+  text-size-adjust: 80%;
   font-size: larger;
 }
 
