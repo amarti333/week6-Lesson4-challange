@@ -32,9 +32,8 @@ body {
   text-align: center;
 }
 
-.temperature {
-  text-size-adjust: 80%;
-  font-size: larger;
+#temperature {
+  font-size: 30px;
 }
 
 .card {
@@ -47,6 +46,12 @@ body {
   padding-left: 20px;
   padding-bottom: 30px;
   text-align: left;
+}
+
+.card .units {
+  position: relative;
+  font-size: 16px;
+  top: -15px;
 }
 
 .table {
