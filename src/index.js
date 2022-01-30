@@ -51,20 +51,18 @@ function citySearch(event) {
   console.log((h4.innerHTML = cityName.value));
   console.log(cityName.value);
 
-  showWeather();
-}
+  function showWeather(response) {
+    Math.round(console.log(response.data.main.temp));
+    document.querySelector("#temperature").innerHTML = Math.round(
+      response.data.main.temp
+    );
+  }
 
-function showWeather(response) {
-  Math.round(console.log(response.data.main.temp));
-  document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  let apiKey = "fcff6baa99a6aaa2ecb4f015dd030bde";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=${apiKey}&units=metric`;
+  axios.get(url).then(showWeather);
+  console.log(url);
 }
-
-let apiKey = "fcff6baa99a6aaa2ecb4f015dd030bde";
-let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=${apiKey}&units=metric`;
-axios.get(url).then(showWeather);
-console.log(url);
 
 let form = document.querySelector("#city-form");
 form.addEventListener("submit", citySearch);
