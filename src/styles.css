@@ -32,6 +32,10 @@ body {
   text-align: center;
 }
 
+.temperature {
+  font-size: larger;
+}
+
 .card {
   background-color: rgba(114, 233, 78, 0.212);
   font-family: "Chakra Petch", sans-serif;
