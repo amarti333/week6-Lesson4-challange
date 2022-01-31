@@ -65,12 +65,23 @@ function displayTemp(response) {
   );
 }
 
-let apiKey = "fcff6baa99a6aaa2ecb4f015dd030bde";
-let city = "New York";
-let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-axios.get(url).then(displayTemp);
-console.log(url);
+function search(city) {
+  let apiKey = "fcff6baa99a6aaa2ecb4f015dd030bde";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(url).then(displayTemp);
+  console.log(url);
+}
 
+function mainSearch(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+search("Salt Lake City");
+
+let form = document.querySelector("#city-form");
+form.addEventListener("submit", mainSearch);
 //Feature 2:
 //function citySearch(event) {
 // event.preventDefault();
