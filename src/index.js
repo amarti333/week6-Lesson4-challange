@@ -42,36 +42,50 @@ let month = months[now.getMonth()];
 let h3 = document.querySelector("h3");
 h3.innerHTML = `${day} ${month} ${date}, ${hours}:${minutes}, ${year}`;
 
-//Feature 2:
-function citySearch(event) {
-  event.preventDefault();
-  let h4 = document.querySelector("h4");
-  let cityName = document.querySelector("#location");
-  let Element = document.querySelector("#icon");
-
-  Element.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  console.log((h4.innerHTML = cityName.value));
-  console.log(cityName.value);
-
-  function showWeather(response) {
-    let image = console.log(response.data.weather[0].icon);
-    Math.round(console.log(response.data.main.temp));
-    document.querySelector("#temperature").innerHTML = Math.round(
-      response.data.main.temp
-    );
-  }
-
-  let apiKey = "fcff6baa99a6aaa2ecb4f015dd030bde";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=${apiKey}&units=metric`;
-  axios.get(url).then(showWeather);
-  console.log(url);
+function displayTemp(response) {
+  console.log(response.data);
+  console.log(response.data.main.temp);
+  let temperatrureElement = document.querySelector("#temperature");
+  let city = document.querySelector("#city");
+  temperatrureElement.innerHTML = Math.round(response.data.main.temp);
+  city.innerHTML = response.data.name;
 }
 
-let form = document.querySelector("#city-form");
-form.addEventListener("submit", citySearch);
+let apiKey = "fcff6baa99a6aaa2ecb4f015dd030bde";
+let url = `https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=${apiKey}&units=metric`;
+axios.get(url).then(displayTemp);
+console.log(url);
+
+//Feature 2:
+//function citySearch(event) {
+// event.preventDefault();
+//let h4 = document.querySelector("h4");
+//let cityName = document.querySelector("#location");
+//let iconElement = document.querySelector("#icon");
+//let icon = response.data.weather[0].icon;
+// iconElement.setAttribute(
+//   "src",
+//   `http://openweathermap.org/img/wn/${icon}@2x.png`
+// );
+// console.log((h4.innerHTML = cityName.value));
+// console.log(cityName.value);
+
+// function showWeather(response) {
+//   let image = console.log(response.data.weather[0].icon);
+//   Math.round(console.log(response.data.main.temp));
+//   document.querySelector("#temperature").innerHTML = Math.round(
+//     response.data.main.temp
+//   );
+//}
+
+// let apiKey = "fcff6baa99a6aaa2ecb4f015dd030bde";
+// let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=${apiKey}&units=metric`;
+//axios.get(url).then(showWeather);
+//console.log(url);
+//}
+
+//let form = document.querySelector("#city-form");
+//form.addEventListener("submit", citySearch);
 
 //Bonus task week 5:
 function currentWeather() {
