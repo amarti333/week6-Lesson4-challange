@@ -1,54 +1,62 @@
 //Feature 1:
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tueday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let date = now.getDate();
-let hours = now.getHours();
-let minutes = now.getMinutes();
+function formating() {
+  let now = new Date();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tueday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+  let date = now.getDate();
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
 
-if (hours < 10) {
-  hours = `0${hours}`;
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let year = now.getFullYear();
+  let months = [
+    "Jan",
+    "Feb",
+    "March",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  let month = months[now.getMonth()];
+
+  let h3 = document.querySelector("h3");
+  h3.innerHTML = `${day} ${month} ${date}, ${hours}:${minutes}, ${year}`;
 }
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
 
-let year = now.getFullYear();
-let months = [
-  "Jan",
-  "Feb",
-  "March",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
-let month = months[now.getMonth()];
-
-let h3 = document.querySelector("h3");
-h3.innerHTML = `${day} ${month} ${date}, ${hours}:${minutes}, ${year}`;
+formating();
 
 function displayTemp(response) {
   console.log(response.data);
-  console.log(response.data.main.temp);
+  console.log(response.data.main.humidity);
   let temperatrureElement = document.querySelector("#temperature");
   let city = document.querySelector("#city");
+  let windSpeedElement = document.querySelector("#wind");
+  let humidityElement = document.querySelector("#humid");
   temperatrureElement.innerHTML = Math.round(response.data.main.temp);
   city.innerHTML = response.data.name;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
 }
 
 let apiKey = "fcff6baa99a6aaa2ecb4f015dd030bde";
