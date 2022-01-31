@@ -47,11 +47,17 @@ function citySearch(event) {
   event.preventDefault();
   let h4 = document.querySelector("h4");
   let cityName = document.querySelector("#location");
+  let Element = document.querySelector("#icon");
 
+  Element.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
   console.log((h4.innerHTML = cityName.value));
   console.log(cityName.value);
 
   function showWeather(response) {
+    let image = console.log(response.data.weather[0].icon);
     Math.round(console.log(response.data.main.temp));
     document.querySelector("#temperature").innerHTML = Math.round(
       response.data.main.temp
