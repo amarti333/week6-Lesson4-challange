@@ -53,14 +53,21 @@ function displayTemp(response) {
   let city = document.querySelector("#city");
   let windSpeedElement = document.querySelector("#wind");
   let humidityElement = document.querySelector("#humid");
+  let iconElement = document.querySelector("#icon");
+
   temperatrureElement.innerHTML = Math.round(response.data.main.temp);
   city.innerHTML = response.data.name;
   humidityElement.innerHTML = response.data.main.humidity;
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 let apiKey = "fcff6baa99a6aaa2ecb4f015dd030bde";
-let url = `https://api.openweathermap.org/data/2.5/weather?q=Paris&appid=${apiKey}&units=metric`;
+let city = "New York";
+let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(url).then(displayTemp);
 console.log(url);
 
